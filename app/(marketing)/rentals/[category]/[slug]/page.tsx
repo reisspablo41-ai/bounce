@@ -1,4 +1,6 @@
-import { supabase } from '@/lib/supabase';
+import { supabaseAdmin, supabase } from '@/lib/supabase';
+
+const db = supabaseAdmin || supabase;
 import { notFound } from 'next/navigation';
 import { Button } from '@/components/ui/Button';
 import { Card, CardContent } from '@/components/ui/Card';
@@ -9,7 +11,7 @@ import { Metadata } from 'next';
 
 export async function generateMetadata({ params }: { params: Promise<{ category: string, slug: string }> }): Promise<Metadata> {
   const { slug: productSlug } = await params;
-  const { data: product } = await supabase
+  const { data: product } = await db
     .from('products')
     .select('name, description, product_images(image_url, is_primary)')
     .eq('slug', productSlug)
@@ -43,7 +45,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
   const { category: categorySlug, slug: productSlug } = await params;
 
   // Fetch product with category info
-  const { data: product, error } = await supabase
+  const { data: product, error } = await db
     .from('products')
     .select('*, categories(*), product_images(image_url, is_primary)')
     .eq('slug', productSlug)

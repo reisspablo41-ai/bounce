@@ -1,8 +1,16 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Mail } from 'lucide-react';
+import { supabaseAdmin, supabase } from '@/lib/supabase';
 
-export function Footer() {
+export async function Footer() {
+  // Use admin client to bypass RLS (Footer is server-only, safe to use service key)
+  const client = supabaseAdmin ?? supabase;
+  const { data: categories } = await client
+    .from('categories')
+    .select('*')
+    .order('name');
+
   return (
     <footer className="bg-slate-900 text-slate-300 pt-16 pb-8">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -31,10 +39,13 @@ export function Footer() {
           <div>
             <h3 className="text-white font-heading font-bold text-lg mb-4">Rentals</h3>
             <ul className="space-y-3">
-              <li><Link href="/rentals/bounce-houses" className="hover:text-primary-400 transition-colors">Bounce Houses</Link></li>
-              <li><Link href="/rentals/water-slides" className="hover:text-primary-400 transition-colors">Water Slides</Link></li>
-              <li><Link href="/rentals/obstacle-courses" className="hover:text-primary-400 transition-colors">Obstacle Courses</Link></li>
-              <li><Link href="/rentals/mechanical-bulls" className="hover:text-primary-400 transition-colors">Mechanical Bulls</Link></li>
+              {categories?.map((category) => (
+                <li key={category.id}>
+                  <Link href={`/rentals/${category.slug}`} className="hover:text-primary-400 transition-colors">
+                    {category.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 

@@ -6,7 +6,9 @@ import { WhyChooseUs } from '@/components/sections/WhyChooseUs';
 import { BigThrill } from '@/components/sections/BigThrill';
 import { Testimonials } from '@/components/sections/Testimonials';
 import { CallToAction } from '@/components/sections/CallToAction';
-import { supabase } from '@/lib/supabase';
+import { supabaseAdmin, supabase } from '@/lib/supabase';
+
+const db = supabaseAdmin || supabase;
 
 export const dynamic = 'force-dynamic';
 
@@ -21,11 +23,11 @@ export default async function Home() {
     { data: concessions },
     { data: chairsTables }
   ] = await Promise.all([
-    supabase.from('products').select(selectFields).eq('status', 'active').ilike('categories.name', '%Water Slide%').limit(3),
-    supabase.from('products').select(selectFields).eq('status', 'active').ilike('categories.name', '%Bull%').limit(2),
-    supabase.from('products').select(selectFields).eq('status', 'active').ilike('categories.name', '%Obstacle%').limit(1),
-    supabase.from('products').select(selectFields).eq('status', 'active').ilike('categories.name', '%Concession%'),
-    supabase.from('products').select(selectFields).eq('status', 'active').or('categories.name.ilike.%Chair%,categories.name.ilike.%Table%'),
+    db.from('products').select(selectFields).eq('status', 'active').ilike('categories.name', '%Water Slide%').limit(3),
+    db.from('products').select(selectFields).eq('status', 'active').ilike('categories.name', '%Bull%').limit(2),
+    db.from('products').select(selectFields).eq('status', 'active').ilike('categories.name', '%Obstacle%').limit(1),
+    db.from('products').select(selectFields).eq('status', 'active').ilike('categories.name', '%Concession%'),
+    db.from('products').select(selectFields).eq('status', 'active').or('categories.name.ilike.%Chair%,categories.name.ilike.%Table%'),
   ]);
 
   const featuredProducts = [

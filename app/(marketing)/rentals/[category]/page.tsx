@@ -1,4 +1,4 @@
-import { supabase } from '@/lib/supabase';
+import { supabaseAdmin, supabase } from '@/lib/supabase';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { Card, CardContent } from '@/components/ui/Card';
@@ -7,9 +7,12 @@ import { Star } from 'lucide-react';
 import { AddToCartButton } from '@/components/cart/AddToCartButton';
 import { Metadata } from 'next';
 
+const db = supabaseAdmin ?? supabase;
+
+
 export async function generateMetadata({ params }: { params: Promise<{ category: string }> }): Promise<Metadata> {
   const { category: categorySlug } = await params;
-  const { data: category } = await supabase
+  const { data: category } = await db
     .from('categories')
     .select('name, description')
     .eq('slug', categorySlug)
@@ -41,7 +44,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
   const { category: categorySlug } = await params;
 
   // Fetch category details
-  const { data: category, error: catError } = await supabase
+  const { data: category, error: catError } = await db
     .from('categories')
     .select('*')
     .eq('slug', categorySlug)
@@ -52,7 +55,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
   }
 
   // Fetch products in this category
-  const { data: products, error: prodError } = await supabase
+  const { data: products, error: prodError } = await db
     .from('products')
     .select('*, product_images(image_url, is_primary)')
     .eq('category_id', category.id)
