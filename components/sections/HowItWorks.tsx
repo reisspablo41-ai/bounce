@@ -5,7 +5,7 @@ export function HowItWorks() {
     {
       number: '01',
       title: 'Browse & Book',
-      description: 'Pick your inflatables, choose your date, and lock it in with a simple 25% deposit. The whole process takes under 5 minutes.',
+      description: 'Pick your inflatables, choose your date, and lock it in. The whole process takes under 5 minutes.',
       icon: ShoppingCart,
       accent: 'text-primary-500',
       border: 'border-primary-200',

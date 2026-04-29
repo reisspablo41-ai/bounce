@@ -5,17 +5,17 @@ export default function TermsPage() {
       
       <div className="prose prose-lg text-slate-600 max-w-none space-y-12">
         <section>
-          <h2 className="text-2xl font-bold font-heading text-slate-900 mb-4">1. Booking & Deposits</h2>
-          <p className="leading-relaxed">To secure your rental date and exactly reserve your chosen equipment, a non-refundable deposit of 25% of the total rental cost is required at the time of booking. The remaining balance must be paid in full at least 48 hours prior to your scheduled delivery time. We accept all major credit cards, cash, and corporate checks.</p>
+          <h2 className="text-2xl font-bold font-heading text-slate-900 mb-4">1. Booking</h2>
+          <p className="leading-relaxed">To secure your rental date and exactly reserve your chosen equipment, the total rental cost must be paid in full at least 48 hours prior to your scheduled delivery time. We accept all major credit cards, cash, and corporate checks.</p>
         </section>
 
         <section>
           <h2 className="text-2xl font-bold font-heading text-slate-900 mb-4">2. Cancellation Policy</h2>
           <p className="mb-4">We understand that plans change. Our cancellation policy is designed to be fair to you while allowing us to manage our inventory:</p>
           <ul className="list-disc pl-6 space-y-3 marker:text-primary-500">
-            <li><strong>14+ Days Notice:</strong> Cancellations made 14 days or more before the event will receive a full refund of any amount paid (minus the non-refundable deposit). The deposit can be applied as a "Raincheck" store credit valid for 1 year.</li>
-            <li><strong>Less than 14 Days Notice:</strong> Will forfeit the 25% deposit, but any additional payments made will be refunded.</li>
-            <li><strong>Weather Cancellations:</strong> If Your Very Own Bounce House Party Rental cancels your reservation due to unsafe weather conditions (winds over 15 MPH, lightning, heavy rain), you will receive a full refund, including the deposit.</li>
+            <li><strong>14+ Days Notice:</strong> Cancellations made 14 days or more before the event will receive a full refund of any amount paid. The payment can be applied as a "Raincheck" store credit valid for 1 year.</li>
+            <li><strong>Less than 14 Days Notice:</strong> Any payments made will be refunded.</li>
+            <li><strong>Weather Cancellations:</strong> If Your Very Own Bounce House Party Rental cancels your reservation due to unsafe weather conditions (winds over 15 MPH, lightning, heavy rain), you will receive a full refund.</li>
           </ul>
         </section>
 

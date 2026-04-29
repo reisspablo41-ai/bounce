@@ -39,7 +39,7 @@ export default function HealthGuaranteePage() {
           </div>
           <div>
             <h2 className="text-2xl font-bold font-heading mb-3 text-slate-900">Weather Policy</h2>
-            <p className="text-slate-600 text-lg leading-relaxed">We continuously monitor local weather. If sustained winds exceed 15 MPH or if heavy rain/lightning is forecasted during your rental period, we will cancel the setup for safety reasons. You will be given the option to reschedule or receive a full refund of your deposit. Inflatables act like sails in high winds, and we will never compromise safety.</p>
+            <p className="text-slate-600 text-lg leading-relaxed">We continuously monitor local weather. If sustained winds exceed 15 MPH or if heavy rain/lightning is forecasted during your rental period, we will cancel the setup for safety reasons. You will be given the option to reschedule or receive a full refund. Inflatables act like sails in high winds, and we will never compromise safety.</p>
           </div>
         </div>
       </div>
